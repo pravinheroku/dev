@@ -1,0 +1,20 @@
+{% extends 'webapp/base.html' %}
+
+{% block content %}
+  <body>
+    <br />
+    <br />
+    <div class="text-center">
+      <h3>CRM - By Pravin...Management at it's finest!</h3>
+      <br />
+      <h5>Keep Track of your records effectively!</h5>
+      <hr />
+      <br />
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}" class="btn btn-primary" type="button">Start Managing! &nbsp; <i class="fa fa-pencil-square" aria-hidden="true"></i></a>
+      {% else %}
+        <a href="{% url 'register' %}" class="btn btn-primary" type="button">Create your account &nbsp; <i class="fa fa-user-plus" aria-hidden="true"></i></a>
+      {% endif %}
+    </div>
+  </body>
+{% endblock %}
