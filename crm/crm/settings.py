@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,7 @@ SECRET_KEY = 'django-insecure-+#cj7ds$t3_6@gr3g08@_m8+$$euf_v33_xbc+$+l38j=tec8t
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [".vercel.app", ".now.sh", "127.0.0.1", "localhost"]
 
 # Application definition
 
@@ -77,13 +77,23 @@ WSGI_APPLICATION = 'crm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '4fF54-dEEC*dB-GBFGdDeeE*c3B54CCf',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '33847',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -124,7 +134,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATICFILES_DIRS = [BASE_DIR / "static"]
+# STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = os.path.join(BASE_DIR, "static"),
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles_build", "static")
 
 
 # Default primary key field type
